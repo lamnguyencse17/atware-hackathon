@@ -2,11 +2,7 @@ import axios from "axios";
 
 export const getCustomerRequest = async () => {
 	const getCustomerURL = `${process.env.BACKEND_SERVER}/customer/get-customer`;
-	const config = {
-		headers: {
-			Authorization: "Basic ZHVudDEzOmR1bnQxMjM=",
-		},
-	};
+	const config = {};
 	try {
 		const getCustomerResponse = await axios.get(getCustomerURL, config);
 		const {
@@ -26,11 +22,7 @@ export const getCustomerRequest = async () => {
 
 export const updateCustomerRequest = async (updateCustomerInfo) => {
 	const updateCustomerURL = `${process.env.BACKEND_SERVER}/customer/update-customer`;
-	const config = {
-		headers: {
-			Authorization: "Basic ZHVudDEzOmR1bnQxMjM=",
-		},
-	};
+	const config = {};
 	try {
 		await axios.post(updateCustomerURL, updateCustomerInfo, config);
 		return { status: true };
@@ -47,11 +39,7 @@ export const updateCustomerRequest = async (updateCustomerInfo) => {
 
 export const updateCustomerPasswordRequest = async (updatedPassword) => {
 	const updateCustomerPasswordURL = `${process.env.BACKEND_SERVER}/customer/update-password`;
-	const config = {
-		headers: {
-			Authorization: "Basic ZHVudDEzOmR1bnQxMjM=",
-		},
-	};
+	const config = {};
 	try {
 		await axios.post(updateCustomerPasswordURL, updatedPassword, config);
 		return { status: true };
