@@ -2,12 +2,9 @@ import React from "react";
 import { useFormik } from "formik";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Switch from "@material-ui/core/Switch";
-import { useSelector } from "react-redux";
-import UpdateProfileSchema from "../../validators/user/UpdateProfileSchema";
 
-export default function ProfileForm({ processUpdateProfile }) {
-	const customer = useSelector((state) => state.customer);
+export default function ProfileForm({ processUpdateProfile, customer }) {
+	// const customer = useSelector((state) => state.customer);
 	const {
 		values,
 		errors,
@@ -16,13 +13,12 @@ export default function ProfileForm({ processUpdateProfile }) {
 		isSubmitting,
 		handleChange,
 		setSubmitting,
-		setFieldValue,
 	} = useFormik({
 		initialValues: {
 			...customer,
 		},
 		enableReinitialize: true,
-		validationSchema: UpdateProfileSchema,
+		// validationSchema: UpdateProfileSchema,
 		onSubmit: () => {
 			processUpdateProfile(values, setSubmitting);
 		},
@@ -37,97 +33,49 @@ export default function ProfileForm({ processUpdateProfile }) {
 					color='primary'
 					autoComplete='off'
 					variant='outlined'
-					label='First Name'
+					label='username'
 					type='text'
-					name='first_name'
+					name='username'
 					size='small'
 					onChange={handleChange}
-					value={values.first_name}
+					value={values.username}
 					disabled={isSubmitting}
-					helperText={
-						errors.first_name && touched.first_name && errors.first_name
-					}
-					error={errors.first_name && touched.first_name}
+					helperText={errors.username && touched.username && errors.username}
+					error={errors.username && touched.username}
 					className='w-full h-10 px-5 border border-black shadow-sm'
 				/>
 			</div>
 			<div>
 				<TextField
-					placeholder={values.last_name}
+					placeholder={values.aboutMe}
 					color='primary'
 					autoComplete='off'
 					variant='outlined'
-					label='Last Name'
+					label='aboutMe'
 					type='text'
-					name='last_name'
+					name='aboutMe'
 					size='small'
 					onChange={handleChange}
-					value={values.last_name}
+					value={values.aboutMe}
 					disabled={isSubmitting}
-					error={errors.last_name && touched.last_name}
-					helperText={errors.last_name && touched.last_name && errors.last_name}
+					error={errors.aboutMe && touched.aboutMe}
+					helperText={errors.aboutMe && touched.aboutMe && errors.aboutMe}
 					className='w-full h-10 px-5 border border-black shadow-sm'
 				/>
 			</div>
 			<div>
 				<TextField
 					color='primary'
-					id='date_of_birth'
-					label='Date of birth'
-					type='date'
+					id='phoneNumber'
+					label='phoneNumber'
+					type='text'
 					variant='outlined'
-					value={values.date_of_birth}
+					value={values.phoneNumber}
 					InputLabelProps={{
 						shrink: true,
 					}}
 					size='small'
 					onChange={handleChange}
-					className='w-full h-10 px-5 border border-black shadow-sm'
-				/>
-				<Switch
-					color='primary'
-					type='checkbox'
-					name='gender'
-					onChange={({ target: { name, checked } }) => {
-						setFieldValue(name, checked);
-					}}
-					checked={values.gender}
-				/>
-				{values.gender ? "Male" : "Female"}
-			</div>
-			<div>
-				<TextField
-					color='primary'
-					autoComplete='off'
-					variant='outlined'
-					label='Address'
-					type='text'
-					name='address'
-					size='small'
-					onChange={handleChange}
-					value={values.address}
-					disabled={isSubmitting}
-					error={errors.address && touched.address}
-					helperText={errors.address && touched.address && errors.address}
-					className='w-full h-10 px-5 border border-black shadow-sm'
-				/>
-			</div>
-			<div>
-				<TextField
-					color='primary'
-					autoComplete='off'
-					variant='outlined'
-					label='Phone'
-					type='tel'
-					name='phone_number'
-					size='small'
-					onChange={handleChange}
-					value={values.phone_number}
-					disabled={isSubmitting}
-					error={errors.phone_number && touched.phone_number}
-					helperText={
-						errors.phone_number && touched.phone_number && errors.phone_number
-					}
 					className='w-full h-10 px-5 border border-black shadow-sm'
 				/>
 			</div>

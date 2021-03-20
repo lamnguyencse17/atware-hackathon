@@ -53,3 +53,17 @@ export const updateCustomerPasswordRequest = async (updatedPassword) => {
 		return { status: false, message };
 	}
 };
+
+export const getMe = async (token) => {
+	const getMeUrl = `${process.env.BACKEND_URL}/api/v1/users/getMe`;
+	try {
+		const userResult = await axios.get(getMeUrl, {
+			headers: {
+				Authorization: token,
+			},
+		});
+		return userResult.data;
+	} catch (err) {
+		console.log(err);
+	}
+};
