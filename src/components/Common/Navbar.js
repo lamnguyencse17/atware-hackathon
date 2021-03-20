@@ -10,6 +10,7 @@ import AlbumIcon from "@material-ui/icons/Album";
 import SportsBasketballIcon from "@material-ui/icons/SportsBasketball";
 import MovieIcon from "@material-ui/icons/Movie";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -38,14 +39,16 @@ export default function Navbar({ isPublic }) {
 				<div className='flex flex-row justify-center mt-1'>
 					<div className='mx-8'>
 						<Button>
-							<div className='text-xl text-white'>
-								{"Eat out "}
-								<RestaurantIcon
-									color='secondary'
-									disableFocusRipple={true}
-									disableRipple={true}
-								/>
-							</div>
+							<Link to='/cafes'>
+								<div className='text-xl text-white'>
+									{"Eat out "}
+									<RestaurantIcon
+										color='secondary'
+										disableFocusRipple={true}
+										disableRipple={true}
+									/>
+								</div>
+							</Link>
 						</Button>
 					</div>
 					<div className='mx-8'>

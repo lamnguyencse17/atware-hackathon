@@ -8,48 +8,22 @@ import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import DataRow from "./Row/DataRow";
+import { getCafeResult } from "../requests/cafe";
 
 export default function Cafes() {
 	const [offset, setOffset] = useState(0);
 	const [limit, setLimit] = useState(10);
 	const [page, setPage] = useState(0);
-	console.log(page);
 	const [total, setTotal] = useState(100);
 	const [cafeEvents, setCafeEvents] = useState([]);
 	useEffect(() => {
-		setCafeEvents([
-			{
-				address: "This is an address",
-				district: "District 9",
-				coordinates: [10, 10],
-				title: "The Coffee House",
-				category: 1,
-				max: 10,
-				host: {
-					name: "Lam",
-					bio: "very handsome",
-				},
-				description: "Work and Play",
-				time: 10,
-				date: "30-08-2021",
-			},
-			{
-				address: "This is an address 2",
-				district: "District 9",
-				coordinates: [10, 10],
-				title: "The Coffee House",
-				category: 1,
-				max: 10,
-				host: {
-					name: "Lam",
-					bio: "very handsome",
-				},
-				description: "Work and Play",
-				time: 10,
-				date: "30-08-2021",
-			},
-		]);
-	}, [offset, limit]);
+		(async () => {
+			const { totalItems, result } = await getCafeResult(page + 1, limit);
+			setTotal(totalItems);
+			// console.log(results);
+			setCafeEvents([...result]);
+		})();
+	}, [page]);
 	const changeLimit = ({ target: { value } }) => {
 		setLimit(value);
 		setOffset(0);
