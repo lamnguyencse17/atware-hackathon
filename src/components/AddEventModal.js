@@ -38,7 +38,18 @@ export default function AddEventModal({ isOpen, closeModal }) {
 		>
 			<Fade in={isOpen}>
 				<Card className={classes.paper}>
-					<CardContent>{/* TODO: FORM GOES HERE */}</CardContent>
+					<CardContent>
+						{/* TODO: FORM GOES HERE */}
+						<div className='flex justify-center items-center'>Header</div>
+						<div className='flex justify-center items-center'>
+							<form>
+								<label>Name
+									<input type="text" placeholder="Your name"></input>
+								</label>
+
+							</form>
+						</div>
+					</CardContent>
 				</Card>
 			</Fade>
 		</Modal>

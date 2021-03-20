@@ -34,7 +34,7 @@ export default function Movies() {
 		setPage(newPage);
 	};
 	return (
-		<div className='flex flex-col items-center content-center w-full px-5 space-y-5'>
+		<div className='mt-10 flex flex-col items-center content-center w-full px-5 space-y-5'>
 			<TableContainer component={Paper} className='border border-black'>
 				<Table aria-label='simple table'>
 					<TableHead>

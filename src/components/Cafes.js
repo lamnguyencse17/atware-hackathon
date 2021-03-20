@@ -9,6 +9,12 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import DataRow from "./Row/DataRow";
 import { getCafeResult } from "../requests/cafe";
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles((theme) => ({
+	bp: {
+		borderColor: "#bb586c",
+	},
+}));
 
 export default function Cafes() {
 	const [offset, setOffset] = useState(0);
@@ -34,8 +40,10 @@ export default function Cafes() {
 		setOffset(newOffset);
 		setPage(newPage);
 	};
+	const border = useStyles();
 	return (
-		<div className='flex flex-col items-center content-center w-full px-5 space-y-5'>
+		
+		<div className='mt-10 flex flex-col items-center content-center w-full px-5 space-y-5'>
 			<TableContainer component={Paper} className='border border-black'>
 				<Table aria-label='simple table'>
 					<TableHead>
