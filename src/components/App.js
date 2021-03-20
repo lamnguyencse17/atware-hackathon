@@ -47,7 +47,11 @@ export default function App() {
 	return (
 		<div className='container mx-auto'>
 			<div className='mt-10'>
-				<div className={"bg-gray-100 p-2 border-l-8 " + border.bp}>
+				<div className='flex flex-col justify-center items-center'>
+					<img src='src/images/logo/weet_text.png' alt='WEET' width='200'></img>
+					<p className="mt-1">We meet everyone, anytime and anywhere!</p>
+				</div>
+				<div className={"bg-gray-100 mt-5 border-l-8 " + colors.bp}>
 					<form className='grid w-full grid-cols-5'>
 						<div className='col-span-2 p-2'>
 							<Autocomplete
