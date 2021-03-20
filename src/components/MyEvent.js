@@ -71,13 +71,15 @@ export default function MyEvent() {
 							events.filter((event) => event._id === selectedEvent)[0]
 								.participant_subschema
 						}
+						eventId={
+							events.filter((event) => event._id === selectedEvent)[0]._id
+						}
 					/>
 					<DeleteModal
 						isOpen={isDeleteModalOpen}
 						closeModal={closeDeleteModal}
-						participants={
-							events.filter((event) => event._id === selectedEvent)[0]
-								.participant_subschema
+						eventId={
+							events.filter((event) => event._id === selectedEvent)[0]._id
 						}
 					/>
 				</>

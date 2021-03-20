@@ -5,6 +5,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import { deleteEvent } from "../../requests/event";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 	modal: {
@@ -23,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DeleteModal({ isOpen, closeModal, eventId }) {
 	const classes = useStyles();
+	const token = useSelector((state) => state.auth.token);
+	const handleConfirmDelete = async () => {
+		deleteEvent(eventId, token);
+	};
 	return (
 		<Modal
 			aria-labelledby='transition-modal-title'

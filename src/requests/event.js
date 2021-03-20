@@ -26,10 +26,12 @@ export const createEvent = async (eventDetail) => {
 	}
 };
 
-export const acceptEvent = async (eventId, userId) => {
+export const acceptEvent = async (eventId, userId, token) => {
 	const acceptEventUrl = `${process.env.BACKEND_URL}/api/v1/events/accept/${eventId}?user_id=${userId}`;
 	try {
-		await axios.put(acceptEventUrl);
+		await axios.put(acceptEventUrl, {
+			headers: { Authorization: token },
+		});
 	} catch (err) {
 		console.log(err);
 	}
@@ -54,6 +56,28 @@ export const getMyEvents = async (page, limit, hostId, token) => {
 			data: { totalItems, result },
 		} = eventResult;
 		return { totalItems, result };
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const deleteEvent = async (eventId, token) => {
+	const deleteEventUrl = `${process.env.BACKEND_URL}/api/v1/events/delete/${eventId}`;
+	try {
+		await axios.delete(deleteEventUrl, {
+			headers: { Authorization: token },
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const acceptRequest = async (eventId, userId, token) => {
+	const acceptUrl = `${process.env.BACKEND_URL}/api/v1/events/accept/${eventId}?user_id=${userId}`;
+	try {
+		await axios.put(acceptUrl, {
+			headers: { Authorization: token },
+		});
 	} catch (err) {
 		console.log(err);
 	}

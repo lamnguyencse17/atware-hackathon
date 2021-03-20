@@ -13,6 +13,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Checkbox } from "@material-ui/core";
+import { acceptEvent } from "../../requests/event";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 	modal: {
@@ -29,9 +31,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function RequestModal({ isOpen, closeModal, participants }) {
+export default function RequestModal({
+	isOpen,
+	closeModal,
+	participants,
+	eventId,
+}) {
 	const classes = useStyles();
-	const acceptRequest = () => {};
+	const token = useSelector((state) => state.auth.token);
+	const acceptRequest = async (userId) => {
+		await acceptEvent(eventId, userId, token);
+	};
 	return (
 		<Modal
 			aria-labelledby='transition-modal-title'
@@ -67,7 +77,7 @@ export default function RequestModal({ isOpen, closeModal, participants }) {
 												<TableCell align='center'>
 													<Checkbox
 														checked={participant.isAccepted}
-														onChange={acceptRequest}
+														onChange={() => acceptRequest(participant.user)}
 														color='primary'
 													/>
 												</TableCell>
