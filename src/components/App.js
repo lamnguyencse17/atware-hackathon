@@ -1,8 +1,15 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
+
+const useStyles = makeStyles((theme) => ({
+	bp: {
+		borderColor: "#bb586c",
+	},
+}));
 
 export default function App() {
 	// District
@@ -31,15 +38,16 @@ export default function App() {
 		"Thu Duc District",
 	];
 	const date = new Date();
+	const border = useStyles();
 	// Time
 	console.log(date.getHours());
 	const times = [...Array(24).keys()]
-		.filter((ele) => ele = date.getHours())
+		.filter((ele) => (ele = date.getHours()))
 		.map((ele) => (ele / 10 >= 1 ? "" : "0") + ele.toString() + ":00");
 	return (
 		<div className='container mx-auto'>
 			<div className='mt-10'>
-				<div className='bg-gray-100 p-2 border-l-8'>
+				<div className={'bg-gray-100 p-2 border-l-8 ' + border.bp}>
 					<form className='grid w-full grid-cols-5'>
 						<div className='col-span-2 p-2'>
 							<Autocomplete
@@ -68,7 +76,7 @@ export default function App() {
 							/>
 						</div>
 						<div className='col-span-1 p-2 flex justify-center items-center'>
-							<Button color="primary">
+							<Button color='primary'>
 								<div className='text-xl primary min-w-100 min-h-100'>
 									<SearchIcon
 										color='text-xl'
