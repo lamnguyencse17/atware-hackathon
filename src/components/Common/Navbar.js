@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 		zIndex: theme.zIndex.drawer + 1,
 	},
 }));
-export default function Navbar({ isPublic }) {
+export default function Navbar({ isPublic, setModal }) {
 	const classes = useStyles();
 	const category = [
 		"Eat out",
@@ -34,7 +34,7 @@ export default function Navbar({ isPublic }) {
 						<Logo />
 					</div>
 					<div className='col-span-7 px-1 text-5xl text-center'></div>
-					{isPublic ? <PublicNavbar /> : <PrivateNavbar />}
+					{isPublic ? <PublicNavbar /> : <PrivateNavbar setModal={setModal} />}
 				</div>
 				<div className='flex flex-row justify-center mt-1'>
 					<div className='mx-8'>
