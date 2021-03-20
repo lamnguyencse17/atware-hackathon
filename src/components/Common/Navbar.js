@@ -51,12 +51,8 @@ export default function Navbar({ isPublic, setModal }) {
 						<Button>
 							<Link to='/movies'>
 								<div className='text-xl text-white'>
-									{"Watching movie "}
-									<MovieIcon
-										color='secondary'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									{"Watching movie  "}
+									<MovieIcon color='secondary' />
 								</div>
 							</Link>
 						</Button>

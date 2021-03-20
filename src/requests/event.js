@@ -83,6 +83,15 @@ export const acceptRequest = async (eventId, userId, token) => {
 	}
 };
 
-export const findEvent = async (district, time, date) => {
-	const findEventUrl = `${process.env.BACKEND_URL}/api/v1/events/get/?page=1&limit=10&district=${district}&time=${time}&date=${date}`;
+export const findEvent = async (district, time, date, limit, page) => {
+	const findEventUrl = `${process.env.BACKEND_URL}/api/v1/events/get/?page=${page}&limit=${limit}&district=${district}&time=${time}&date=${date}`;
+	try {
+		const eventResult = await axios.get(findEventUrl);
+		const {
+			data: { totalItems, result },
+		} = eventResult;
+		return { totalItems, result };
+	} catch (err) {
+		console.log(err);
+	}
 };
