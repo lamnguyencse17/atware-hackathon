@@ -17,15 +17,19 @@ export default function App() {
 	return (
 		<div className='container mx-auto'>
 			<div className='mt-10 '>
-				<div className='bg-gray-100 px-2 pt-5 pb-2'>
+				<div className='px-2 pt-5 pb-2 bg-gray-100'>
 					<h1 className='text-2xl'>Find a place to go</h1>
-					<form className='grid grid-cols-5 w-full'>
-						<select className="col-span-2">
+					<form className='grid w-full grid-cols-5'>
+						<select className='col-span-2'>
 							{districts.map((district) => (
-								<option value={district}>{district}</option>
+								<option value={district} key={district}>
+									{district}
+								</option>
 							))}
 						</select>
-						<label className='col-span-2 flex justify-center items-center'>Time</label>
+						<label className='flex items-center justify-center col-span-2'>
+							Time
+						</label>
 						<button className='p-2 bg-red-800 rounded-md' type='submit'>
 							Search now
 						</button>

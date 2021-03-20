@@ -15,17 +15,12 @@ import {
 } from "../../constants/validationMessage";
 
 export default Yup.object().shape({
-	first_name: Yup.string()
+	name: Yup.string()
 		.min(MIN_LENGTH_SHORT_FIELD, TOO_SHORT)
 		.max(MAX_LENGTH_SHORT_FIELD, TOO_LONG)
 		.required(FIELD_REQUIRED),
-	last_name: Yup.string()
-		.min(MIN_LENGTH_SHORT_FIELD, TOO_SHORT)
-		.max(MAX_LENGTH_SHORT_FIELD, TOO_LONG)
-		.required(FIELD_REQUIRED),
-	gender: Yup.boolean().required(FIELD_REQUIRED),
-	date_of_birth: Yup.date().required(FIELD_REQUIRED),
-	address: Yup.string()
+	email: Yup.string()
+		.email()
 		.min(MIN_LENGTH_SHORT_FIELD, TOO_SHORT)
 		.max(MAX_LENGTH_SHORT_FIELD, TOO_LONG)
 		.required(FIELD_REQUIRED),

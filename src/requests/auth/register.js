@@ -1,12 +1,9 @@
 import axios from "axios";
 
 export const registerRequest = async (registerDetail) => {
-	const registerURL = `${process.env.BACKEND_SERVER}/customer/create-customer`;
+	const registerURL = `${process.env.BACKEND_SERVER}/api/v1/users/signup`;
 	try {
-		const registerResponse = await axios.post(registerURL, registerDetail);
-		const {
-			data: { data },
-		} = registerResponse;
+		await axios.post(registerURL, registerDetail);
 		return { status: true };
 	} catch (err) {
 		if (err.response === undefined) {

@@ -19,11 +19,8 @@ export default function RegisterForm({ processSubmitRegister }) {
 		setFieldValue,
 	} = useFormik({
 		initialValues: {
-			first_name: "",
-			last_name: "",
-			gender: true,
-			date_of_birth,
-			address: "",
+			name: "",
+			email: "",
 			username: "",
 			phone_number: "",
 			password: "",
