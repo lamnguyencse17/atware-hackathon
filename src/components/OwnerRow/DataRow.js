@@ -11,7 +11,8 @@ export default function DataRow({
 	date,
 	time,
 	description,
-	showModal,
+	showRequestModal,
+	showDeleteModal,
 }) {
 	return (
 		<TableRow key={_id}>
@@ -38,11 +39,15 @@ export default function DataRow({
 					<Button
 						color='primary'
 						variant='contained'
-						onClick={() => showModal(_id)}
+						onClick={() => showRequestModal(_id)}
 					>
 						Requests
 					</Button>
-					<Button color='secondary' variant='contained'>
+					<Button
+						color='secondary'
+						variant='contained'
+						onClick={() => showDeleteModal(_id)}
+					>
 						Delete Event
 					</Button>
 				</div>

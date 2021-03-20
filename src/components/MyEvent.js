@@ -11,6 +11,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import DataRow from "./OwnerRow/DataRow";
 import RequestModal from "./OwnerRow/RequestModal";
+import DeleteModal from "./OwnerRow/DeleteModal";
 
 export default function MyEvent() {
 	const [offset, setOffset] = useState(0);
@@ -18,13 +19,21 @@ export default function MyEvent() {
 	const [page, setPage] = useState(0);
 	const [total, setTotal] = useState(100);
 	const [events, setEvent] = useState([]);
-	const [isModalOpen, setModal] = useState(false);
+	const [isRequestModalOpen, setRequestModal] = useState(false);
+	const [isDeleteModalOpen, setDeleteModal] = useState(false);
 	const [selectedEvent, setSelected] = useState(null);
-	const closeModal = () => {
-		setModal(false), setSelected(null);
+	const closeDeleteModal = () => {
+		setDeleteModal(false), setSelected(null);
 	};
-	const showModal = (eventId) => {
-		setModal(true);
+	const showDeleteModal = (eventId) => {
+		setDeleteModal(true);
+		setSelected(eventId);
+	};
+	const closeRequestModal = () => {
+		setRequestModal(false), setSelected(null);
+	};
+	const showRequestModal = (eventId) => {
+		setRequestModal(true);
 		setSelected(eventId);
 	};
 	const token = useSelector((state) => state.auth.token);
@@ -54,14 +63,24 @@ export default function MyEvent() {
 	return (
 		<div className='flex flex-col items-center content-center w-full px-5 space-y-5'>
 			{events.length !== 0 && selectedEvent !== null ? (
-				<RequestModal
-					isOpen={isModalOpen}
-					closeModal={closeModal}
-					participants={
-						events.filter((event) => event._id === selectedEvent)[0]
-							.participant_subschema
-					}
-				/>
+				<>
+					<RequestModal
+						isOpen={isRequestModalOpen}
+						closeModal={closeRequestModal}
+						participants={
+							events.filter((event) => event._id === selectedEvent)[0]
+								.participant_subschema
+						}
+					/>
+					<DeleteModal
+						isOpen={isDeleteModalOpen}
+						closeModal={closeDeleteModal}
+						participants={
+							events.filter((event) => event._id === selectedEvent)[0]
+								.participant_subschema
+						}
+					/>
+				</>
 			) : (
 				<></>
 			)}
@@ -81,7 +100,12 @@ export default function MyEvent() {
 					</TableHead>
 					<TableBody>
 						{events.map((event) => (
-							<DataRow {...event} key={event._id} showModal={showModal} />
+							<DataRow
+								{...event}
+								key={event._id}
+								showRequestModal={showRequestModal}
+								showDeleteModal={showDeleteModal}
+							/>
 						))}
 					</TableBody>
 				</Table>
