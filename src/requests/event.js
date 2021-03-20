@@ -28,4 +28,18 @@ export const createEvent = async (eventDetail) => {
 
 export const acceptEvent = async (eventId, userId) => {
 	const acceptEventUrl = `${process.env.BACKEND_URL}/api/v1/events/accept/${eventId}?user_id=${userId}`;
+	try {
+		await axios.put(acceptEventUrl);
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const interactEvent = async (eventId) => {
+	const interactEventUrl = `${process.env.BACKEND_URL}/api/v1/events/interact/${eventId}`;
+	try {
+		await axios.put(interactEventUrl);
+	} catch (err) {
+		console.log(err);
+	}
 };
