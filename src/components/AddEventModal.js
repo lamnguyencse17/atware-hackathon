@@ -81,120 +81,159 @@ export default function AddEventModal({ isOpen, closeModal }) {
 			}}
 		>
 			<Fade in={isOpen}>
-				<Card className={classes.paper}>
+				<Card className={classes.paper + "rounded-lg"}>
 					<CardContent>
 						{/* TODO: FORM GOES HERE */}
 						<div className='flex'>
-							<div className='mr-12 flex flex-col justify-center items-center pb-4	'>
+							<div className='ml-16 mr-20 flex flex-col justify-center items-center pb-4'>
 								<img src='src/images/stock/event.png' width='200'></img>
 								<h1>{"CREATE YOUR OWN EVENT!"}</h1>
 							</div>
 							<div>
 								<form className={classes.root} noValidate autoComplete='on'>
-									<div>
-										<TextField
-											id='event-date'
-											type='date'
-											variant='outlined'
-											InputLabelProps={{
-												shrink: true,
-											}}
-											required='true'
-											label='Date'
-										/>
-										<Autocomplete
-											id='event-time'
-											required='true'
-											options={times}
-											getOptionLabel={(option) => option}
-											renderInput={(params) => (
-												<TextField
-													{...params}
-													label='Time'
-													variant='outlined'
-												/>
-											)}
-											label='Time'
-											variant='outlined'
-										/>
-										<TextField
-											id='event-address'
-											required='true'
-											label='Place address'
-											variant='outlined'
-										/>
-
-										<TextField
-											id='event-district'
-											required='true'
-											label='District'
-											variant='outlined'
-										/>
-
-										<Autocomplete
-											color='primary'
-											id='event-category'
-											options={category}
-											getOptionLabel={(option) => option}
-											renderInput={(params) => (
-												<TextField
-													{...params}
-													label='Category'
-													variant='outlined'
-												/>
-											)}
-										/>
-
-										<Autocomplete
-											color='primary'
-											id='event-attendants'
-											required='true'
-											options={nums}
-											getOptionLabel={(option) => option}
-											renderInput={(params) => (
-												<TextField
-													{...params}
-													label='Maximum attendants'
-													variant='outlined'
-												/>
-											)}
-										/>
-
-										<TextField
-											id='event-title'
-											label='Title'
-											variant='outlined'
-										/>
-
-										<TextField
-											id='event-description'
-											label='Description'
-											variant='outlined'
-										/>
-
-										<TextField
-											id='event-keywords'
-											label='Keywords'
-											variant='outlined'
-										/>
+									<div className='text-sm'>Required info</div>
+									<div className='mt-2 flex flex-row'>
+										<div className='pr-1 w-1/2'>
+											<TextField
+												id='event-date'
+												type='date'
+												variant='outlined'
+												InputLabelProps={{
+													shrink: true,
+												}}
+												required='true'
+												label='Date'
+												className='w-full shadow-sm'
+											/>
+										</div>
+										<div className='pl-1 w-1/2'>
+											<Autocomplete
+												id='event-time'
+												required='true'
+												options={times}
+												getOptionLabel={(option) => option}
+												renderInput={(params) => (
+													<TextField
+														{...params}
+														label='Time'
+														variant='outlined'
+													/>
+												)}
+												label='Time'
+												variant='outlined'
+												className='w-full shadow-sm'
+											/>
+										</div>
 									</div>
-									<div></div>
-									<div>
+									<div className='mt-2 flex flex-row'>
+										<div className='pr-1 w-1/2'>
+											<Autocomplete
+												color='primary'
+												id='event-category'
+												required='true'
+												options={category}
+												getOptionLabel={(option) => option}
+												renderInput={(params) => (
+													<TextField
+														{...params}
+														label='Category'
+														variant='outlined'
+													/>
+												)}
+												className='w-full shadow-sm'
+											/>
+										</div>
+										<div className='pl-1 w-1/2'>
+											<Autocomplete
+												color='primary'
+												id='event-attendants'
+												required='true'
+												options={nums}
+												getOptionLabel={(option) => option}
+												renderInput={(params) => (
+													<TextField
+														{...params}
+														label='Attendants'
+														variant='outlined'
+													/>
+												)}
+												className='w-full shadow-sm'
+											/>
+										</div>
+									</div>
+									<div className='mt-2 flex flex-row'>
+										<div className='pr-1 w-1/2'>
+											<Autocomplete
+												id='event-district'
+												required='true'
+												options={districts}
+												getOptionLabel={(option) => option}
+												renderInput={(params) => (
+													<TextField
+														{...params}
+														label='District'
+														variant='outlined'
+													/>
+												)}
+												className='w-full shadow-sm'
+											/>
+										</div>
+										<div className='pl-1 w-1/2'>
+											<TextField
+												id='event-address'
+												required='true'
+												label='Place address'
+												variant='outlined'
+												className='w-full shadow-sm'
+											/>
+										</div>
+									</div>
+									<div className='mt-4 text-sm'>Additional info</div>
+									<div className='mt-2'>
 										<div>
+											<TextField
+												id='event-title'
+												label='Title'
+												variant='outlined'
+												className='w-full shadow-sm'
+											/>
+										</div>
+									</div>
+									<div className='mt-2 flex flex-row'>
+										<div className='pr-1 w-1/2'>
+											<TextField
+												id='event-description'
+												label='Description'
+												variant='outlined'
+												className='w-full shadow-sm'
+											/>
+										</div>
+										<div className='pl-1 w-1/2'>
+											<TextField
+												id='event-keywords'
+												label='Keywords'
+												variant='outlined'
+												className='w-full shadow-sm'
+											/>
+										</div>
+									</div>
+									<div className='mt-4 flex flex-row'>
+										<div className='pr-1 w-1/2'>
 											<Button
-												className='w-50% '
 												variant='contained'
 												color='primary'
 												onClick={closeModal}
+												className='w-full shadow-sm '
 											>
 												Submit
 											</Button>
-
+										</div>
+										<div className='pl-1 w-1/2'>
 											<Button
-												className='w-50%'
 												variant='contained'
 												color='secondary'
 												onClick={closeModal}
+												className='w-full shadow-sm'
 											>
 												Cancel
 											</Button>
