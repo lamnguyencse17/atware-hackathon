@@ -15,6 +15,11 @@ import Paper from "@material-ui/core/Paper";
 import DataRow from "./Row/DataRow";
 
 export default function App() {
+	const quotes = [
+		"We meet anyone, anytime, anywhere!",
+		"Connect people together, after the pandamic",
+		"Easy, friendly, conveniently",
+	];
 	const districts = [
 		"Binh Chanh District",
 		"Binh Tan District",
@@ -39,7 +44,7 @@ export default function App() {
 		"Tan Phu District",
 		"Thu Duc District",
 	];
-	const date = new Date();	
+	const date = new Date();
 	const times = [...Array(24).keys()]
 		.filter((ele) => ele > date.getHours())
 		.map((ele) => (ele / 10 >= 1 ? "" : "0") + ele.toString() + ":00");
@@ -78,9 +83,14 @@ export default function App() {
 			<div className='mt-8'>
 				<div className='flex flex-col justify-center items-center'>
 					<img src='src/images/logo/weet_text.png' alt='WEET' width='250'></img>
-					<p className="mt-4">"We can meet anyone, anytime and anywhere!"</p>
+					{/* TODO: Slider of text */}
+					<p className='mt-4'>{quotes[0]}</p>
 				</div>
-				<div className={"bg-gradient-to-r from-pink-200 to-green-100 mt-8 primary p-2 rounded-xl"}>
+				<div
+					className={
+						"bg-gradient-to-r from-pink-200 to-green-100 mt-8 primary p-2 rounded-xl"
+					}
+				>
 					<form className='grid w-full grid-cols-5'>
 						<div className='col-span-2 p-2'>
 							<Autocomplete
