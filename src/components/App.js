@@ -1,15 +1,8 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
-
-const useStyles = makeStyles((theme) => ({
-	bp: {
-		borderColor: "#bb586c",
-	},
-}));
 
 export default function App() {
 	// District
@@ -38,7 +31,6 @@ export default function App() {
 		"Thu Duc District",
 	];
 	const date = new Date();
-	const colors = useStyles();
 	// Time
 	console.log(date.getHours());
 	const times = [...Array(24).keys()]
@@ -46,12 +38,12 @@ export default function App() {
 		.map((ele) => (ele / 10 >= 1 ? "" : "0") + ele.toString() + ":00");
 	return (
 		<div className='container mx-auto'>
-			<div className='mt-10'>
+			<div className='mt-8'>
 				<div className='flex flex-col justify-center items-center'>
-					<img src='src/images/logo/weet_text.png' alt='WEET' width='200'></img>
-					<p className="mt-1">We meet everyone, anytime and anywhere!</p>
+					<img src='src/images/logo/weet_text.png' alt='WEET' width='250'></img>
+					<p className="mt-4">We can meet anyone, anytime and anywhere!</p>
 				</div>
-				<div className={"bg-gray-100 mt-5 border-l-8 " + colors.bp}>
+				<div className={"bg-gray-200 mt-8 primary p-2 rounded-xl"}>
 					<form className='grid w-full grid-cols-5'>
 						<div className='col-span-2 p-2'>
 							<Autocomplete

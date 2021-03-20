@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
+const user = { name: "Khiemne" };
+
 export default function PrivateNavbar({ setModal }) {
 	return (
 		<>
@@ -19,9 +21,9 @@ export default function PrivateNavbar({ setModal }) {
 						/>
 					</button>
 				</div>
-				<div className='p-1 text-center'>
+				<div className='p-1 col-span-1 text-center'>
 					<Link to='/profile'>
-						{"Profile "}
+						{"Hello, " + user.name + "!"}
 						<PersonIcon
 							color='secondary'
 							disableFocusRipple={true}
