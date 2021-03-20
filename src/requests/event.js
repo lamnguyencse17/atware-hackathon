@@ -25,3 +25,7 @@ export const createEvent = async (eventDetail) => {
 		console.log(err);
 	}
 };
+
+export const acceptEvent = async (eventId, userId) => {
+	const acceptEventUrl = `${process.env.BACKEND_URL}/api/v1/events/accept/${eventId}?user_id=${userId}`;
+};
