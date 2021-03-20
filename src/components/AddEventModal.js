@@ -119,6 +119,7 @@ export default function AddEventModal({ isOpen, closeModal }) {
 										className='w-50% '
 										variant='contained'
 										color='primary'
+										onClick={closeModal}
 									>
 										Submit
 									</Button>
