@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 
 export default function PrivateNavbar() {
 	return (
-		// <div className='w-full h-10'>
-		// 	<div className='grid grid-cols-12'>
-		// 		<div className='content-center col-span-2 px-1 align-middle'>
-		// 			<Logo />
-		// 		</div>
-		// 		<div className='col-span-8 px-1 text-center'>Reserved</div>
 		<>
-			<div className='grid grid-cols-2 col-span-2 px-1'>
+			<div className='grid grid-cols-4 col-span-3 px-1'>
+				<div className='col-span-2 p-1 text-center'>
+					<Link>Add a new event</Link>
+				</div>
 				<div className='p-1 text-center'>
 					<Link to='/profile'>Profile</Link>
 				</div>
@@ -19,7 +16,5 @@ export default function PrivateNavbar() {
 				</div>
 			</div>
 		</>
-		// 	</div>
-		// </div>
 	);
 }

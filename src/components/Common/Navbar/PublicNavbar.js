@@ -10,7 +10,7 @@ export default function PublicNavbar() {
 		// 		</div>
 		// <div className='col-span-8 px-1 text-center'>Reserved</div>
 		<>
-			<div className='grid content-center grid-cols-2 col-span-2 px-1 align-middle'>
+			<div className='grid content-center grid-cols-2 col-span-3 px-1 align-middle'>
 				<div className='p-1 text-center'>
 					<Link to='/login'>Login</Link>
 				</div>

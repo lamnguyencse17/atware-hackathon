@@ -11,7 +11,6 @@ export default function PublicRoute({ component: Component, ...rest }) {
 			render={(props) => (
 				<div className='flex flex-col h-full'>
 					<Navbar isPublic={true} />
-
 					<div className='flex flex-grow'>
 						<Component {...props} />
 					</div>

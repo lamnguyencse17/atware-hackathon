@@ -32,7 +32,7 @@ export default function Navbar({ isPublic }) {
 					<div className='content-center col-span-2 px-1 align-middle'>
 						<Logo />
 					</div>
-					<div className='col-span-8 px-1 text-5xl text-center'></div>
+					<div className='col-span-7 px-1 text-5xl text-center'></div>
 					{isPublic ? <PublicNavbar /> : <PrivateNavbar />}
 				</div>
 				<div className='flex flex-row justify-center mt-1'>
