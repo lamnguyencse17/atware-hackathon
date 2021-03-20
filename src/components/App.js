@@ -14,6 +14,7 @@ export default function App() {
 		"District 10",
 		"District 11",
 	];
+	const hours = [...Array(24).keys()];
 	return (
 		<div className='container mx-auto'>
 			<div className='mt-10 '>
