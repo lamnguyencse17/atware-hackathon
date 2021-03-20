@@ -10,8 +10,8 @@ const user = { name: "Khiemne" };
 export default function PrivateNavbar({ setModal }) {
 	return (
 		<>
-			<div className='grid grid-cols-5 col-span-3 px-1'>
-				<div className='col-span-2 p-1 text-center'>
+			<div className='grid grid-cols-3 col-span-3 px-1'>
+				<div className='col-span-1 p-1 text-left'>
 					<button onClick={() => setModal(true)} className='font-bold'>
 						{"Add a new event "}
 						<AddCircleOutlineIcon
@@ -21,25 +21,27 @@ export default function PrivateNavbar({ setModal }) {
 						/>
 					</button>
 				</div>
-				<div className='p-1 col-span-1 text-center'>
-					<Link to='/profile'>
-						{"Hello, " + user.name + "!"}
-						<PersonIcon
-							color='secondary'
-							disableFocusRipple={true}
-							disableRipple={true}
-						></PersonIcon>
-					</Link>
-				</div>
-				<div className='p-1 text-center'>
-					<Link to='/logout'>
-						{"Logout "}
-						<ExitToAppIcon
-							color='secondary'
-							disableFocusRipple={true}
-							disableRipple={true}
-						></ExitToAppIcon>
-					</Link>
+				<div className='col-span-2 flex flex-row justify-around'>
+					<div className='p-1 col-span-1 text-center'>
+						<Link to='/profile'>
+							{"Hello, " + user.name + "!"}
+							<PersonIcon
+								color='secondary'
+								disableFocusRipple={true}
+								disableRipple={true}
+							></PersonIcon>
+						</Link>
+					</div>
+					<div className='p-1 col-span-1 text-center'>
+						<Link to='/logout'>
+							{"Logout "}
+							<ExitToAppIcon
+								color='secondary'
+								disableFocusRipple={true}
+								disableRipple={true}
+							></ExitToAppIcon>
+						</Link>
+					</div>
 				</div>
 			</div>
 		</>
