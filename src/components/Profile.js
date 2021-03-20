@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-	getCustomer,
-	setCustomer,
-	updateCustomer,
-	updateCustomerPassword,
-} from "../redux/actions/customer";
+import { useSelector } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Tab from "@material-ui/core/Tab";
 import TabContext from "@material-ui/lab/TabContext";
@@ -13,7 +7,6 @@ import TabList from "@material-ui/lab/TabList";
 import TabPanel from "@material-ui/lab/TabPanel";
 import ProfileForm from "./Profile/ProfileForm";
 import PasswordForm from "./Profile/PasswordForm";
-// import { alertSuccess } from "../redux/actions/alert";
 import { getMe } from "../requests/customer";
 
 export default function Profile() {
