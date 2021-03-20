@@ -43,3 +43,22 @@ export const interactEvent = async (eventId) => {
 		console.log(err);
 	}
 };
+
+export const getMyEvents = async (page, limit, hostId, token) => {
+	const getMyEventsUrl = `${process.env.BACKEND_URL}/api/v1/events/getDetail/?page=${page}&limit=${limit}&host=${hostId}`;
+	try {
+		const eventResult = await axios.get(getMyEventsUrl, {
+			headers: { Authorization: token },
+		});
+		const {
+			data: { totalItems, result },
+		} = eventResult;
+		return { totalItems, result };
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const findEvent = async (district, time, date) => {
+	const findEventUrl = `${process.env.BACKEND_URL}/api/v1/events/get/?page=1&limit=10&district=${district}&time=${time}&date=${date}`;
+};

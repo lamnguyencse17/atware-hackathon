@@ -11,6 +11,7 @@ import Restaurants from "./Restaurants";
 import Event from "./Event";
 import Cafes from "./Cafes";
 import Movies from "./Movies";
+import MyEvent from "./MyEvent";
 const Profile = React.lazy(() => import("./Profile"));
 
 export default function Router() {
@@ -24,6 +25,7 @@ export default function Router() {
 				<PublicRoute path='/cafes' component={Cafes} />
 				<PublicRoute path='/movies' component={Movies} />
 				<PublicRoute path='/event/:id' component={Event} />
+				<PrivateRoute path='/my-events' component={MyEvent} />
 				<Suspense fallback={<CircularProgress />}>
 					<PublicRoute exact path='/profile' component={Profile} />
 				</Suspense>

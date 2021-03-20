@@ -42,11 +42,7 @@ export default function Navbar({ isPublic, setModal }) {
 							<Link to='/cafes'>
 								<div className='text-xl text-white'>
 									{"Eat out "}
-									<RestaurantIcon
-										color='secondary'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									<RestaurantIcon color='secondary' />
 								</div>
 							</Link>
 						</Button>
@@ -56,11 +52,7 @@ export default function Navbar({ isPublic, setModal }) {
 							<Link to='/movies'>
 								<div className='text-xl text-white'>
 									{"Watching movie "}
-									<MovieIcon
-										color='secondary text-xl text-white'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									<MovieIcon color='secondary text-xl text-white' />
 								</div>
 							</Link>
 						</Button>
@@ -69,11 +61,7 @@ export default function Navbar({ isPublic, setModal }) {
 						<Button>
 							<div className='text-xl text-white'>
 								{"Night club "}
-								<AlbumIcon
-									color='secondary'
-									disableFocusRipple={true}
-									disableRipple={true}
-								/>
+								<AlbumIcon color='secondary' />
 							</div>
 						</Button>
 					</div>
@@ -81,11 +69,7 @@ export default function Navbar({ isPublic, setModal }) {
 						<Button>
 							<div className='text-xl text-white'>
 								{"Sports Activity "}
-								<SportsBasketballIcon
-									color='secondary'
-									disableFocusRipple={true}
-									disableRipple={true}
-								/>
+								<SportsBasketballIcon color='secondary' />
 							</div>
 						</Button>
 					</div>
@@ -93,11 +77,7 @@ export default function Navbar({ isPublic, setModal }) {
 						<Button>
 							<div className='text-xl text-white'>
 								{"Dating "}
-								<FavoriteIcon
-									color='secondary'
-									disableFocusRipple={true}
-									disableRipple={true}
-								/>
+								<FavoriteIcon color='secondary' />
 							</div>
 						</Button>
 					</div>
