@@ -53,6 +53,20 @@ export default function Navbar({ isPublic }) {
 					</div>
 					<div className='mx-8'>
 						<Button>
+							<Link to='/movies'>
+								<div className='text-xl text-white'>
+									{"Watching movie "}
+									<MovieIcon
+										color='secondary text-xl text-white'
+										disableFocusRipple={true}
+										disableRipple={true}
+									/>
+								</div>
+							</Link>
+						</Button>
+					</div>
+					<div className='mx-8'>
+						<Button>
 							<div className='text-xl text-white'>
 								{"Night club "}
 								<AlbumIcon
@@ -69,18 +83,6 @@ export default function Navbar({ isPublic }) {
 								{"Sports Activity "}
 								<SportsBasketballIcon
 									color='secondary'
-									disableFocusRipple={true}
-									disableRipple={true}
-								/>
-							</div>
-						</Button>
-					</div>
-					<div className='mx-8'>
-						<Button>
-							<div className='text-xl text-white'>
-								{"Watching movie "}
-								<MovieIcon
-									color='secondary text-xl text-white'
 									disableFocusRipple={true}
 									disableRipple={true}
 								/>

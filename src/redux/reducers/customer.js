@@ -6,15 +6,10 @@ import {
 } from "../types/customer";
 
 const initialState = {
-	id: -1,
-	account__username: "",
-	first_name: "",
-	last_name: "",
-	is_active: false,
-	gender: false,
-	phone_number: "",
-	date_of_birth: new Date().toISOString().substr(0, 10),
-	address: "",
+	_id: "6055b59194365130301e712f",
+	phone_number: "0123456789",
+	name: "Lam",
+	aboutMe: "I am a cool boiz",
 };
 
 export default (state = initialState, action) => {

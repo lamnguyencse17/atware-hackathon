@@ -1,7 +1,7 @@
 import { LOGIN_FAILED, LOGIN_SUCCESS } from "../types/auth";
 
 const initialState = {
-	isLogin: false,
+	isLogin: true,
 };
 
 export default (state = initialState, action) => {

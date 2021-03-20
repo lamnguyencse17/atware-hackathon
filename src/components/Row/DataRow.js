@@ -39,7 +39,7 @@ export default function DataRow({
 					<div>{description}</div>
 				</TableCell>
 				<TableCell align='center'>
-					<Button color='secondary' variant='contained'>
+					<Button color='primary' variant='contained'>
 						Join Event
 					</Button>
 				</TableCell>
