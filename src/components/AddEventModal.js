@@ -59,13 +59,14 @@ export default function AddEventModal({ isOpen, closeModal }) {
 		"Thu Duc District",
 	];
 	const date = new Date();
-	// Time
-	console.log(date.getHours());
+
 	const times = [...Array(24).keys()]
 		.filter((ele) => ele > date.getHours())
 		.map((ele) => (ele / 10 >= 1 ? "" : "0") + ele.toString() + ":00");
 
-	const nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+	const nums = [...Array(11).keys()]
+		.filter((ele) => ele > 0)
+		.map((ele) => ele.toString());
 	return (
 		<Modal
 			aria-labelledby='transition-modal-title'
@@ -83,85 +84,124 @@ export default function AddEventModal({ isOpen, closeModal }) {
 				<Card className={classes.paper}>
 					<CardContent>
 						{/* TODO: FORM GOES HERE */}
-						<div> </div>
 						<div className='flex'>
-							{" "}
-							CREATE YOUR OWN EVENT!
-							<form className={classes.root} noValidate autoComplete='on'>
-								<div>
-									<TextField id='standard-basic' required='true' label='Date' />
-									<TextField id='standard-basic' required='true' label='Time' />
-									<TextField
-										id='standard-basic'
-										required='true'
-										label='Address'
-									/>
-								</div>
+							<div className='mr-12 flex flex-col justify-center items-center pb-4	'>
+								<img src='src/images/stock/event.png' width='200'></img>
+								<h1>{"CREATE YOUR OWN EVENT!"}</h1>
+							</div>
+							<div>
+								<form className={classes.root} noValidate autoComplete='on'>
+									<div>
+										<TextField
+											id='event-date'
+											type='date'
+											variant='outlined'
+											InputLabelProps={{
+												shrink: true,
+											}}
+											required='true'
+											label='Date'
+										/>
+										<Autocomplete
+											id='event-time'
+											required='true'
+											options={times}
+											getOptionLabel={(option) => option}
+											renderInput={(params) => (
+												<TextField
+													{...params}
+													label='Time'
+													variant='outlined'
+												/>
+											)}
+											label='Time'
+											variant='outlined'
+										/>
+										<TextField
+											id='event-address'
+											required='true'
+											label='Place address'
+											variant='outlined'
+										/>
 
-								<div>
-									<TextField
-										id='standard-basic'
-										required='true'
-										label='District'
-									/>
+										<TextField
+											id='event-district'
+											required='true'
+											label='District'
+											variant='outlined'
+										/>
 
-									<Autocomplete
-										color='primary'
-										id='Category'
-										options={category}
-										getOptionLabel={(option) => option}
-										renderInput={(params) => (
-											<TextField
-												{...params}
-												label='Category'
-												variant='outlined'
-											/>
-										)}
-									/>
+										<Autocomplete
+											color='primary'
+											id='event-category'
+											options={category}
+											getOptionLabel={(option) => option}
+											renderInput={(params) => (
+												<TextField
+													{...params}
+													label='Category'
+													variant='outlined'
+												/>
+											)}
+										/>
 
-									<Autocomplete
-										color='primary'
-										id='Maximum number of attendants'
-										required='true'
-										options={nums}
-										getOptionLabel={(option) => option}
-										renderInput={(params) => (
-											<TextField
-												{...params}
-												label='Maximum number of attendants'
-												variant='outlined'
-											/>
-										)}
-									/>
-								</div>
-								<div>
-									<TextField id='filled-basic' label='Description' />
-								</div>
-								<div>
-									<TextField id='filled-basic' label='Keywords' />{" "}
-								</div>
-								<div></div>
-								<TextField id='outlined-basic' label='Title' />
-								<div>
-									<Button
-										className='w-50% '
-										variant='contained'
-										color='primary'
-										onClick={closeModal}
-									>
-										Submit
-									</Button>
+										<Autocomplete
+											color='primary'
+											id='event-attendants'
+											required='true'
+											options={nums}
+											getOptionLabel={(option) => option}
+											renderInput={(params) => (
+												<TextField
+													{...params}
+													label='Maximum attendants'
+													variant='outlined'
+												/>
+											)}
+										/>
 
-									<Button
-										className='w-50%'
-										variant='contained'
-										color='secondary'
-										onClick={closeModal}
-									>
-										Cancel
-									</Button>
-								</div>
-							</form>
+										<TextField
+											id='event-title'
+											label='Title'
+											variant='outlined'
+										/>
+
+										<TextField
+											id='event-description'
+											label='Description'
+											variant='outlined'
+										/>
+
+										<TextField
+											id='event-keywords'
+											label='Keywords'
+											variant='outlined'
+										/>
+									</div>
+									<div></div>
+									<div>
+										<div>
+											<Button
+												className='w-50% '
+												variant='contained'
+												color='primary'
+												onClick={closeModal}
+											>
+												Submit
+											</Button>
+
+											<Button
+												className='w-50%'
+												variant='contained'
+												color='secondary'
+												onClick={closeModal}
+											>
+												Cancel
+											</Button>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
 					</CardContent>
 				</Card>

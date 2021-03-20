@@ -84,15 +84,15 @@ export default function App() {
 				<div className='flex flex-col justify-center items-center'>
 					<img src='src/images/logo/weet_text.png' alt='WEET' width='250'></img>
 					{/* TODO: Slider of text */}
-					<p className='mt-4'>{quotes[0]}</p>
+					<p className='mt-4'>{quotes[1]}</p>
 				</div>
 				<div
 					className={
 						"bg-gradient-to-r from-pink-200 to-green-100 mt-8 primary p-2 rounded-xl"
 					}
 				>
-					<form className='grid w-full grid-cols-5'>
-						<div className='col-span-2 p-2'>
+					<form className='w-full flex items-center'>
+						<div className='w-2/5 p-2 float-left'>
 							<Autocomplete
 								color='primary'
 								id='address'
@@ -105,10 +105,24 @@ export default function App() {
 										variant='outlined'
 									/>
 								)}
+								className='w-full shadow-sm'
 								onChange={(_, value) => setQuery({ ...query, district: value })}
 							/>
 						</div>
-						<div className='col-span-2 p-2'>
+						<div className='w-1/5 p-2 float-left'>
+							<TextField
+								color='primary'
+								id='date'
+								type='date'
+								variant='outlined'
+								InputLabelProps={{
+									shrink: true,
+								}}
+								label='Date'
+								className='w-full shadow-sm'
+							/>
+						</div>
+						<div className='w-1/5 p-2 float-left'>
 							<Autocomplete
 								color='primary'
 								id='time'
@@ -117,19 +131,26 @@ export default function App() {
 								renderInput={(params) => (
 									<TextField {...params} label='Time' variant='outlined' />
 								)}
+								className='w-full shadow-sm'
 								onChange={(_, value) => {
 									setQuery({ ...query, time: parseInt(value.substring(0, 2)) });
 								}}
 							/>
 						</div>
-						<div className='flex items-center justify-center col-span-1 p-2'>
-							<Button color='primary' onClick={handleQuery}>
-								<div className='text-xl primary min-w-100 min-h-100'>
-									<SearchIcon color='primary' />
+						<div className='w-1/5 p-2 h-full float-left'>
+							<Button
+								color='primary'
+								onClick={handleQuery}
+								className='w-full text-lg p-8'
+								variant='outlined'
+							>
+								<div className='h-full'>
+									<SearchIcon color='primary' className='h-full' />
 									{"Search now"}
 								</div>
 							</Button>
 						</div>
+						<div className='clear-both'></div>
 					</form>
 				</div>
 			</div>
