@@ -5,9 +5,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import { deleteEvent } from "../../requests/event";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 	modal: {
@@ -24,17 +23,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function AddEventModal({ isOpen, closeModal }) {
+export default function DeleteModal({ isOpen, closeModal, eventId }) {
 	const classes = useStyles();
-	const category = [
-		"Eat out",
-		"Night club",
-		"Sports Activity",
-		"Watching movie",
-		"Dating",
-	];
-
-	const nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+	const token = useSelector((state) => state.auth.token);
+	const handleConfirmDelete = async () => {
+		deleteEvent(eventId, token);
+	};
 	return (
 		<Modal
 			aria-labelledby='transition-modal-title'
@@ -50,7 +44,7 @@ export default function AddEventModal({ isOpen, closeModal }) {
 		>
 			<Fade in={isOpen}>
 				<Card className={classes.paper}>
-					<CardContent>{/* TODO: FORM GOES HERE */}</CardContent>
+					<CardContent></CardContent>
 				</Card>
 			</Fade>
 		</Modal>

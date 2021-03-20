@@ -42,11 +42,7 @@ export default function Navbar({ isPublic, setModal }) {
 							<Link to='/cafes'>
 								<div className='text-xl text-white'>
 									{"Eat out "}
-									<RestaurantIcon
-										color='secondary'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									<RestaurantIcon color='secondary' />
 								</div>
 							</Link>
 						</Button>

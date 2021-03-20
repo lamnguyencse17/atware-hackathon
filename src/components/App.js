@@ -69,6 +69,9 @@ export default function App() {
 								renderInput={(params) => (
 									<TextField {...params} label='Time' variant='outlined' />
 								)}
+								onChange={({ target: { name, value } }) =>
+									console.log(name, value)
+								}
 							/>
 						</div>
 						<div className='flex items-center justify-center col-span-1 p-2'>
