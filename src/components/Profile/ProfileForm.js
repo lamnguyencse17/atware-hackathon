@@ -33,7 +33,7 @@ export default function ProfileForm({ processUpdateProfile, customer }) {
 					color='primary'
 					autoComplete='off'
 					variant='outlined'
-					label='username'
+					// label='username'
 					type='text'
 					name='username'
 					size='small'

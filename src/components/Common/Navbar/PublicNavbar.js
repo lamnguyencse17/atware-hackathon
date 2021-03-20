@@ -5,8 +5,8 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 export default function PublicNavbar() {
 	return (
 		<>
-			<div className='grid content-center grid-cols-2 col-span-3 px-1 align-middle'>
-				<div className='p-1 text-center'>
+			<div className='content-center px-1 align-middle'>
+				<div className='p-1 text-center mr-4 float-right'>
 					<Link to='/login'>
 						{"Login "}
 						<PersonOutlineIcon
@@ -16,7 +16,7 @@ export default function PublicNavbar() {
 						></PersonOutlineIcon>
 					</Link>
 				</div>
-				<div className='p-1 text-center'>
+				<div className='p-1 text-center mr-4 float-right'>
 					<Link to='/register'>Register</Link>
 				</div>
 			</div>

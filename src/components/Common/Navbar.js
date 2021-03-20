@@ -29,76 +29,60 @@ export default function Navbar({ isPublic, setModal }) {
 	return (
 		<AppBar position='static' color='primary' className={classes.appBar}>
 			<div className='w-full container m-auto'>
-				<div className='grid grid-cols-6 pt-2'>
-					<span className='content-center col-span-1 px-1 align-middle'>
+				<div className='pt-2'>
+					<span className='content-center px-1 align-middle float-left'>
 						<Logo />
 					</span>
-					<div className='col-span-2 text-4xl text-center'></div>
 					{isPublic ? <PublicNavbar /> : <PrivateNavbar setModal={setModal} />}
+					<div className='clear-both'></div>
 				</div>
 				<div className='flex flex-row justify-center mt-1'>
-					<div className="mx-4">
+					<div className='mx-2'>
 						<Button>
 							<Link to='/cafes'>
 								<div className='text-xl text-white'>
-									{"Eat out "}
 									<RestaurantIcon color='secondary' />
+									{" Eat out"}
 								</div>
 							</Link>
 						</Button>
 					</div>
-					<div className="mx-4">
+					<div className='mx-2'>
 						<Button>
 							<Link to='/movies'>
 								<div className='text-xl text-white'>
-									{"Watching movie "}
-									<MovieIcon
-										color='secondary'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									<MovieIcon color='secondary' />
+									{" Watching movie "}
 								</div>
 							</Link>
 						</Button>
 					</div>
-					<div className="mx-4">
+					<div className='mx-2'>
 						<Button>
 							<Link to='/nightclub'>
 								<div className='text-xl text-white'>
-									{"Night club "}
-									<AlbumIcon
-										color='secondary'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									<AlbumIcon color='secondary' />
+									{" Night club"}
 								</div>
 							</Link>
 						</Button>
 					</div>
-					<div className="mx-4">
+					<div className='mx-2'>
 						<Button>
 							<Link to='/sports'>
 								<div className='text-xl text-white'>
-									{"Sports Activity "}
-									<SportsBasketballIcon
-										color='secondary'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									<SportsBasketballIcon color='secondary' />
+									{" Sports Activity"}
 								</div>
 							</Link>
 						</Button>
 					</div>
-					<div className="mx-4"> 
+					<div className='mx-2'>
 						<Link to='/dating'>
 							<Button>
 								<div className='text-xl text-white'>
-									{"Dating "}
-									<FavoriteIcon
-										color='secondary'
-										disableFocusRipple={true}
-										disableRipple={true}
-									/>
+									<FavoriteIcon color='secondary' />
+									{" Dating"}
 								</div>
 							</Button>
 						</Link>
