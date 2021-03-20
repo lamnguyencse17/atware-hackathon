@@ -143,9 +143,10 @@ export default function App() {
 								onClick={handleQuery}
 								className='w-full text-lg p-8'
 								variant='outlined'
+								style={{ "height": "56px"}}
 							>
 								<div className='h-full'>
-									<SearchIcon color='primary' className='h-full' />
+									<SearchIcon color='primary' className='w-full h-full' />
 									{"Search now"}
 								</div>
 							</Button>
