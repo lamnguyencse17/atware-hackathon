@@ -19,12 +19,12 @@ export default function DataRow({
 				<TableCell align='left'>
 					<HostDetail {...host} />
 				</TableCell>
-				<TableCell align='center'>{title}</TableCell>
-				<TableCell align='center'>{date}</TableCell>
-				<TableCell align='center'>{time}</TableCell>
-				<TableCell align='center'>{district}</TableCell>
-				<TableCell align='center'>{category}</TableCell>
-				<TableCell align='center'>{description}</TableCell>
+				<TableCell align='center'><div>{title}</div></TableCell>
+				<TableCell align='center'><div>{date}</div></TableCell>
+				<TableCell align='center'><div>{time}</div></TableCell>
+				<TableCell align='center'><div>{district}</div></TableCell>
+				<TableCell align='center'><div>{category}</div></TableCell>
+				<TableCell align='center'><div>{description}</div></TableCell>
 			</TableRow>
 		</>
 	);
