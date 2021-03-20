@@ -30,14 +30,14 @@ export default function Navbar({ isPublic, setModal }) {
 		<AppBar position='static' color='primary' className={classes.appBar}>
 			<div className='w-full container m-auto'>
 				<div className='grid grid-cols-6 pt-2'>
-					<div className='content-center col-span-1 px-1 align-middle'>
+					<span className='content-center col-span-1 px-1 align-middle'>
 						<Logo />
-					</div>
+					</span>
 					<div className='col-span-2 text-4xl text-center'></div>
 					{isPublic ? <PublicNavbar /> : <PrivateNavbar setModal={setModal} />}
 				</div>
 				<div className='flex flex-row justify-center mt-1'>
-					<div className="mr-4">
+					<div className="mx-4">
 						<Button>
 							<Link to='/cafes'>
 								<div className='text-xl text-white'>
@@ -47,7 +47,7 @@ export default function Navbar({ isPublic, setModal }) {
 							</Link>
 						</Button>
 					</div>
-					<div className="mr-4">
+					<div className="mx-4">
 						<Button>
 							<Link to='/movies'>
 								<div className='text-xl text-white'>
@@ -61,7 +61,7 @@ export default function Navbar({ isPublic, setModal }) {
 							</Link>
 						</Button>
 					</div>
-					<div className="mr-4">
+					<div className="mx-4">
 						<Button>
 							<Link to='/nightclub'>
 								<div className='text-xl text-white'>
@@ -75,7 +75,7 @@ export default function Navbar({ isPublic, setModal }) {
 							</Link>
 						</Button>
 					</div>
-					<div className="mr-4">
+					<div className="mx-4">
 						<Button>
 							<Link to='/sports'>
 								<div className='text-xl text-white'>
@@ -89,7 +89,7 @@ export default function Navbar({ isPublic, setModal }) {
 							</Link>
 						</Button>
 					</div>
-					<div className="mr-4"> 
+					<div className="mx-4"> 
 						<Link to='/dating'>
 							<Button>
 								<div className='text-xl text-white'>
