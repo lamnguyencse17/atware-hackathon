@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
 	getCustomer,
 	setCustomer,
@@ -13,30 +13,38 @@ import TabList from "@material-ui/lab/TabList";
 import TabPanel from "@material-ui/lab/TabPanel";
 import ProfileForm from "./Profile/ProfileForm";
 import PasswordForm from "./Profile/PasswordForm";
-import { alertSuccess } from "../redux/actions/alert";
+// import { alertSuccess } from "../redux/actions/alert";
+import { getMe } from "../requests/customer";
 
 export default function Profile() {
 	const [tab, setTab] = React.useState("1");
 	const handleChange = (event, newTab) => {
 		setTab(newTab);
 	};
-	const dispatch = useDispatch();
+	const [customer, setCustomer] = useState(null);
+	const token = useSelector((state) => state.auth.token);
+	// const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(getCustomer());
+		(async () => {
+			const requestedCustomer = await getMe(token);
+			setCustomer(requestedCustomer);
+			// console.log(results);
+			// setCafeEvents([...result]);
+		})();
 	}, []);
 	const processUpdateProfile = async (values, setSubmitting) => {
 		setSubmitting(true);
-		dispatch(updateCustomer(values)).then(() => {
-			dispatch(setCustomer(values));
-			dispatch(alertSuccess("Successfully updated profile"));
-		});
+		// dispatch(updateCustomer(values)).then(() => {
+		// 	dispatch(setCustomer(values));
+		// 	dispatch(alertSuccess("Successfully updated profile"));
+		// });
 		setSubmitting(false);
 	};
 	const processUpdateProfilePassword = async (values, setSubmitting) => {
 		setSubmitting(true);
-		dispatch(updateCustomerPassword(values)).then(() => {
-			dispatch(alertSuccess("Successfully updated password"));
-		});
+		// dispatch(updateCustomerPassword(values)).then(() => {
+		// 	dispatch(alertSuccess("Successfully updated password"));
+		// });
 		setSubmitting(false);
 	};
 	return (
@@ -56,7 +64,10 @@ export default function Profile() {
 				</AppBar>
 				<TabPanel value='1'>
 					<div className='px-5'>
-						<ProfileForm processUpdateProfile={processUpdateProfile} />
+						<ProfileForm
+							processUpdateProfile={processUpdateProfile}
+							customer={customer}
+						/>
 					</div>
 				</TabPanel>
 				<TabPanel value='2'>
