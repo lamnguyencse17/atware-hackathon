@@ -1,5 +1,6 @@
 import { DEFAULT_CENTER_COORDINATES } from "../../constants/map";
 import { getGoogleServices } from "../google";
+import { putMarker } from "./map/marker";
 // import { initInfowindow } from "./map/infowindow";
 
 let Map;
@@ -7,7 +8,7 @@ let Map;
 export const initMap = (mapRef, { center, zoom }) => {
 	const GoogleServices = getGoogleServices();
 	Map = new GoogleServices.Map(mapRef.current, { center, zoom });
-	// initInfowindow();
+	putMarker("EVENT", { ...center });
 };
 
 export const getMapInstance = () => {

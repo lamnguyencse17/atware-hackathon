@@ -1,13 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { getEventById } from "../requests/event";
+import { initGoogleMapService } from "../services/google";
 import { geoCode } from "../services/google/geocode";
 import { initMap } from "../services/google/map";
+import loadMapScript from "../utils/loadMapScript";
 
 export default function Event() {
+	const [isLoaded, setLoaded] = useState(false);
 	const { id } = useParams();
 	const mapRef = useRef(null);
 	const [event, setEvent] = useState(null);
+	useEffect(() => {
+		let mapScript;
+		loadMapScript.then((script) => {
+			mapScript = script;
+			initGoogleMapService();
+			setLoaded(true);
+		});
+		return () => {
+			document.body.removeChild(mapScript);
+		};
+	}, []);
 	useEffect(() => {
 		(async () => {
 			const event = await getEventById(id);
@@ -15,7 +29,7 @@ export default function Event() {
 		})();
 	}, []);
 	useEffect(() => {
-		if (event === null) {
+		if (event === null || !isLoaded) {
 			return;
 		}
 		const geocodeRequest = {
@@ -24,10 +38,14 @@ export default function Event() {
 					? "ChIJ-6NhwcMudTERHmnMoUfNd-8"
 					: event.place_id,
 		};
-		geoCode(geocodeRequest).then(({ lat, lng }) => {
-			initMap(mapRef, { zoom: 17, center: { lat, lng } });
-		});
-	}, []);
+		try {
+			geoCode(geocodeRequest).then(({ lat, lng }) => {
+				initMap(mapRef, { zoom: 17, center: { lat, lng } });
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	}, [event, isLoaded]);
 	if (!event) {
 		return <></>;
 	}
@@ -73,7 +91,7 @@ export default function Event() {
 					</tbody>
 				</table>
 			</div>
-			<div id='map' ref={mapRef} className='w-full h-full'></div>
+			<div id='map' ref={mapRef} className='w-full h-64'></div>
 		</div>
 	);
 }
