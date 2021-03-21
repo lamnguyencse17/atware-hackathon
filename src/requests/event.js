@@ -85,6 +85,7 @@ export const acceptRequest = async (eventId, userId, token) => {
 
 export const findEvent = async (district, time, date, limit, page) => {
 	const findEventUrl = `${process.env.BACKEND_URL}/api/v1/events/get/?page=${page}&limit=${limit}&district=${district}&time=${time}&date=${date}`;
+	console.log(findEventUrl);
 	try {
 		const eventResult = await axios.get(findEventUrl);
 		const {

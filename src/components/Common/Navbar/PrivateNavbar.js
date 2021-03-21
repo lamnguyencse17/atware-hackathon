@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ export default function PrivateNavbar({ setModal }) {
 	return (
 		<>
 			<div className='px-1'>
-				<div className='p-1 mr-4 float-right'>
+				<div className='float-right p-1 mr-4'>
 					<Link to='/logout'>
 						{"Logout "}
 						<ExitToAppIcon
@@ -23,7 +23,7 @@ export default function PrivateNavbar({ setModal }) {
 					</Link>
 				</div>
 
-				<div className='p-1 mr-4 float-right'>
+				<div className='float-right p-1 mr-4'>
 					<Link to='/profile'>
 						{"Hello, " + user.name + "!"}
 						<PersonIcon
@@ -34,7 +34,7 @@ export default function PrivateNavbar({ setModal }) {
 					</Link>
 				</div>
 
-				<div className='p-1 mr-4 float-right'>
+				<div className='float-right p-1 mr-4'>
 					<button onClick={() => setModal(true)} className='font-bold'>
 						{"Add a new event "}
 						<AddCircleOutlineIcon
@@ -44,15 +44,19 @@ export default function PrivateNavbar({ setModal }) {
 						/>
 					</button>
 				</div>
-				<div className='p-1 mr-4 float-right'>
-					<button onClick={() => setModal(true)} className='font-bold'>
+				<div className='float-right p-1 mr-4'>
+					{/* <button className='font-bold'> */}
+
+					<Link to={"/my-event"}>
 						{"My event "}
 						<HistoryIcon
 							color='secondary'
 							disableFocusRipple={true}
 							disableRipple={true}
 						/>
-					</button>
+					</Link>
+
+					{/* </button> */}
 				</div>
 			</div>
 		</>

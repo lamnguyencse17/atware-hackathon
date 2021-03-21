@@ -64,7 +64,11 @@ export default function App() {
 		setPage(newPage);
 	};
 
-	const [query, setQuery] = useState({ district: districts[0], time: 0 });
+	const [query, setQuery] = useState({
+		district: districts[0],
+		time: 0,
+		date: "21-03-2021",
+	});
 	const [results, setResults] = useState([]);
 	const handleQuery = async () => {
 		const { district, time } = query;
@@ -73,7 +77,7 @@ export default function App() {
 			time,
 			"21-03-2021",
 			limit,
-			page
+			page + 1
 		);
 		setResults(result);
 		setTotal(totalItems);
@@ -81,10 +85,10 @@ export default function App() {
 	return (
 		<div
 			className='container mx-auto'
-			style={{ "backgroundImage": 'url("src/images/bg/neuron_bg.png")' }}
+			style={{ backgroundImage: 'url("src/images/bg/neuron_bg.png")' }}
 		>
 			<div className='mt-8'>
-				<div className='flex flex-col justify-center items-center'>
+				<div className='flex flex-col items-center justify-center'>
 					<img src='src/images/logo/weet_text.png' alt='WEET' width='250'></img>
 					{/* TODO: Slider of text */}
 					<p className='mt-4'>{quotes[1]}</p>
@@ -94,8 +98,8 @@ export default function App() {
 						"bg-gradient-to-r from-pink-200 to-green-100 mt-8 primary p-2 rounded-xl"
 					}
 				>
-					<form className='w-full flex items-center'>
-						<div className='w-2/5 p-2 float-left'>
+					<form className='flex items-center w-full'>
+						<div className='float-left w-2/5 p-2'>
 							<Autocomplete
 								color='primary'
 								id='address'
@@ -112,7 +116,7 @@ export default function App() {
 								onChange={(_, value) => setQuery({ ...query, district: value })}
 							/>
 						</div>
-						<div className='w-1/5 p-2 float-left'>
+						<div className='float-left w-1/5 p-2'>
 							<TextField
 								color='primary'
 								id='date'
@@ -123,9 +127,15 @@ export default function App() {
 								}}
 								label='Date'
 								className='w-full shadow-sm'
+								onChange={({ target: { value } }) => {
+									setQuery({
+										...query,
+										date: value,
+									});
+								}}
 							/>
 						</div>
-						<div className='w-1/5 p-2 float-left'>
+						<div className='float-left w-1/5 p-2'>
 							<Autocomplete
 								color='primary'
 								id='time'
@@ -140,11 +150,11 @@ export default function App() {
 								}}
 							/>
 						</div>
-						<div className='w-1/5 p-2 h-full float-left'>
+						<div className='float-left w-1/5 h-full p-2'>
 							<Button
 								color='primary'
 								onClick={handleQuery}
-								className='w-full text-lg p-8'
+								className='w-full p-8 text-lg'
 								variant='outlined'
 								style={{ height: "56px" }}
 							>
