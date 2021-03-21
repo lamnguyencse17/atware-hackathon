@@ -46,7 +46,6 @@ export default function MyEvent() {
 				hostId,
 				token
 			);
-			console.log(result);
 			setTotal(totalItems);
 			setEvent([...result]);
 		})();

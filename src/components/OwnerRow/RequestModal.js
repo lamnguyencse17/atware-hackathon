@@ -37,6 +37,7 @@ export default function RequestModal({
 	participants,
 	eventId,
 }) {
+	console.log(participants);
 	const classes = useStyles();
 	const token = useSelector((state) => state.auth.token);
 	const acceptRequest = async (userId) => {

@@ -3,6 +3,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { Button } from "@material-ui/core";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function DataRow({
 	_id,
@@ -58,7 +59,7 @@ export default function DataRow({
 						</>
 					) : (
 						<Button color='primary' variant='contained'>
-							Detail
+							<Link to={`/event/${_id}`}>Detail</Link>
 						</Button>
 					)}
 				</div>

@@ -41,10 +41,14 @@ export const acceptEvent = async (eventId, userId, token) => {
 	}
 };
 
-export const interactEvent = async (eventId) => {
+export const interactEvent = async (eventId, token) => {
 	const interactEventUrl = `${process.env.BACKEND_URL}/api/v1/events/interact/${eventId}`;
 	try {
-		await axios.put(interactEventUrl);
+		await axios.post(
+			interactEventUrl,
+			{},
+			{ headers: { Authorization: token } }
+		);
 	} catch (err) {
 		console.log(err);
 	}
@@ -60,6 +64,7 @@ export const getMyEvents = async (page, limit, hostId, token) => {
 		const eventResult2 = await axios.get(getMyEventsUrl2, {
 			headers: { Authorization: token },
 		});
+		console.log(eventResult2.data);
 		return {
 			totalItems: eventResult1.data.totalItems + eventResult2.data.totalItems,
 			result: [...eventResult1.data.result, ...eventResult2.data.final_event],

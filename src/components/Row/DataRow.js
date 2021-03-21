@@ -3,9 +3,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import HostDetail from "./HostDetail";
 import { Button } from "@material-ui/core";
+import { interactEvent } from "../../requests/event";
+import { useSelector } from "react-redux";
 
 export default function DataRow({
-	id,
+	_id,
 	category,
 	district,
 	title,
@@ -14,9 +16,14 @@ export default function DataRow({
 	description,
 	host,
 }) {
+	const token = useSelector((state) => state.auth.token);
+	const joinEvent = async () => {
+		console.log(_id);
+		await interactEvent(_id, token);
+	};
 	return (
 		<>
-			<TableRow key={id}>
+			<TableRow key={_id}>
 				<TableCell align='left'>
 					<HostDetail {...host} />
 				</TableCell>
@@ -39,7 +46,7 @@ export default function DataRow({
 					<div>{description}</div>
 				</TableCell>
 				<TableCell align='center'>
-					<Button color='primary' variant='contained'>
+					<Button color='primary' variant='contained' onClick={joinEvent}>
 						Join Event
 					</Button>
 				</TableCell>

@@ -57,16 +57,7 @@ export default function Navbar({ isPublic, setModal }) {
 							</Link>
 						</Button>
 					</div>
-					<div className='mx-2'>
-						<Button>
-							<Link to='/cafes'>
-								<div className='text-xl text-white'>
-									<AlbumIcon color='secondary' />
-									{" Night club"}
-								</div>
-							</Link>
-						</Button>
-					</div>
+
 					<div className='mx-2'>
 						<Button>
 							<Link to='/cafes'>
@@ -86,6 +77,16 @@ export default function Navbar({ isPublic, setModal }) {
 								</div>
 							</Button>
 						</Link>
+					</div>
+					<div className='mx-2'>
+						<Button>
+							<Link to='/cafes'>
+								<div className='text-xl text-white'>
+									<AlbumIcon color='secondary' />
+									{" Others"}
+								</div>
+							</Link>
+						</Button>
 					</div>
 				</div>
 			</div>
