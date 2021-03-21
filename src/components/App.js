@@ -44,6 +44,30 @@ export default function App() {
 		"Tan Phu District",
 		"Thu Duc District",
 	];
+	const districts2 = [
+		"BinhChanhDistrict",
+		"BinhTanDistrict",
+		"BinhThanhDistrict",
+		"CanGioDistrict",
+		"CuChiDistrict",
+		"District1",
+		"District3",
+		"District4",
+		"District5",
+		"District6",
+		"District7",
+		"District8",
+		"District9",
+		"District11",
+		"District12",
+		"GoVapDistrict",
+		"HocMonDistrict",
+		"NhaBeDistrict",
+		"PhuNhuanDistrict",
+		"TanBinhDistrict",
+		"TanPhuDistrict",
+		"ThuDucDistrict",
+	];
 	const date = new Date();
 	const times = [...Array(24).keys()]
 		.filter((ele) => ele > date.getHours())
@@ -67,15 +91,15 @@ export default function App() {
 	const [query, setQuery] = useState({
 		district: districts[0],
 		time: 0,
-		date: "21-03-2021",
+		date: "2021-21-03",
 	});
 	const [results, setResults] = useState([]);
 	const handleQuery = async () => {
-		const { district, time } = query;
+		const { district, time, date } = query;
 		const { result, totalItems } = await findEvent(
 			district,
 			time,
-			"21-03-2021",
+			date,
 			limit,
 			page + 1
 		);
@@ -113,7 +137,10 @@ export default function App() {
 									/>
 								)}
 								className='w-full shadow-sm'
-								onChange={(_, value) => setQuery({ ...query, district: value })}
+								onChange={(_, value) => {
+									const index = districts.indexOf(value);
+									setQuery({ ...query, district: districts2[index] });
+								}}
 							/>
 						</div>
 						<div className='float-left w-1/5 p-2'>
@@ -128,9 +155,10 @@ export default function App() {
 								label='Date'
 								className='w-full shadow-sm'
 								onChange={({ target: { value } }) => {
+									let date = value.split("-");
 									setQuery({
 										...query,
-										date: value,
+										date: `${date[0]}-${date[1]}-${date[2]}`,
 									});
 								}}
 							/>
@@ -168,7 +196,7 @@ export default function App() {
 					</form>
 				</div>
 			</div>
-			<div className='mt-10'>
+			<div className='mt-10 mb-10'>
 				{results.length > 0 ? (
 					<TableContainer component={Paper} className='border border-black'>
 						<Table aria-label='simple table'>

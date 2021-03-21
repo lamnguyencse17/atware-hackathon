@@ -7,6 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { deleteEvent } from "../../requests/event";
 import { useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	modal: {
@@ -46,23 +47,23 @@ export default function DeleteModal({ isOpen, closeModal, eventId }) {
 				<Card className={classes.paper}>
 					<CardContent>
 						<div className='flex flex-col justify-center'>
-							<div className='px-16 mt-4 flex flex-col justify-center items-center pb-4'>
+							<div className='flex flex-col items-center justify-center px-16 pb-4 mt-4'>
 								<img src='src/images/stock/warn.png' width='200'></img>
 								<h1 className='mt-4'>{"ARE YOU SURE?"}</h1>
 							</div>
 							<div>
-								<div className='mt-4 flex flex-row'>
-									<div className='pr-1 w-1/2'>
+								<div className='flex flex-row mt-4'>
+									<div className='w-1/2 pr-1'>
 										<Button
 											variant='contained'
 											color='primary'
-											onClick={closeModal}
+											onClick={handleConfirmDelete}
 											className='w-full shadow-sm '
 										>
 											Deny accept
 										</Button>
 									</div>
-									<div className='pl-1 w-1/2'>
+									<div className='w-1/2 pl-1'>
 										<Button
 											variant='contained'
 											color='secondary'

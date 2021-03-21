@@ -43,9 +43,10 @@ export default function MyEvent() {
 			const { totalItems, result } = await getMyEvents(
 				page + 1,
 				limit,
-				"6051677e312ff82a1485c6e8",
+				hostId,
 				token
 			);
+			console.log(result);
 			setTotal(totalItems);
 			setEvent([...result]);
 		})();
@@ -90,7 +91,6 @@ export default function MyEvent() {
 				<Table aria-label='simple table'>
 					<TableHead>
 						<TableRow>
-							{/* <TableCell align='center'>Host</TableCell> */}
 							<TableCell align='center'>Title</TableCell>
 							<TableCell align='center'>Date</TableCell>
 							<TableCell align='center'>Time</TableCell>

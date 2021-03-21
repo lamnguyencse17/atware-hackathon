@@ -28,9 +28,9 @@ export default function Navbar({ isPublic, setModal }) {
 	];
 	return (
 		<AppBar position='static' color='primary' className={classes.appBar}>
-			<div className='w-full container m-auto'>
+			<div className='container w-full m-auto'>
 				<div className='pt-2'>
-					<span className='content-center px-1 align-middle float-left'>
+					<span className='content-center float-left px-1 align-middle'>
 						<Logo />
 					</span>
 					{isPublic ? <PublicNavbar /> : <PrivateNavbar setModal={setModal} />}
@@ -59,7 +59,7 @@ export default function Navbar({ isPublic, setModal }) {
 					</div>
 					<div className='mx-2'>
 						<Button>
-							<Link to='/nightclub'>
+							<Link to='/cafes'>
 								<div className='text-xl text-white'>
 									<AlbumIcon color='secondary' />
 									{" Night club"}
@@ -69,7 +69,7 @@ export default function Navbar({ isPublic, setModal }) {
 					</div>
 					<div className='mx-2'>
 						<Button>
-							<Link to='/sports'>
+							<Link to='/cafes'>
 								<div className='text-xl text-white'>
 									<SportsBasketballIcon color='secondary' />
 									{" Sports Activity"}
@@ -78,7 +78,7 @@ export default function Navbar({ isPublic, setModal }) {
 						</Button>
 					</div>
 					<div className='mx-2'>
-						<Link to='/dating'>
+						<Link to='/cafes'>
 							<Button>
 								<div className='text-xl text-white'>
 									<FavoriteIcon color='secondary' />

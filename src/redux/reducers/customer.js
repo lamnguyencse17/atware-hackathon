@@ -6,7 +6,7 @@ import {
 } from "../types/customer";
 
 const initialState = {
-	_id: "6055b59194365130301e712f",
+	_id: "6056070a241efa24cee643e2",
 	phone_number: "0123456789",
 	name: "Lam",
 	aboutMe: "I am a cool boiz",

@@ -2,6 +2,7 @@ import React from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { Button } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 export default function DataRow({
 	_id,
@@ -11,9 +12,11 @@ export default function DataRow({
 	date,
 	time,
 	description,
+	host,
 	showRequestModal,
 	showDeleteModal,
 }) {
+	const user_id = useSelector((state) => state.customer._id);
 	return (
 		<TableRow key={_id}>
 			<TableCell align='center'>
@@ -36,20 +39,28 @@ export default function DataRow({
 			</TableCell>
 			<TableCell align='center'>
 				<div className='space-x-3'>
-					<Button
-						color='primary'
-						variant='contained'
-						onClick={() => showRequestModal(_id)}
-					>
-						Requests
-					</Button>
-					<Button
-						color='secondary'
-						variant='contained'
-						onClick={() => showDeleteModal(_id)}
-					>
-						Delete Event
-					</Button>
+					{user_id === host._id ? (
+						<>
+							<Button
+								color='primary'
+								variant='contained'
+								onClick={() => showRequestModal(_id)}
+							>
+								Requests
+							</Button>
+							<Button
+								color='secondary'
+								variant='contained'
+								onClick={() => showDeleteModal(_id)}
+							>
+								Delete Event
+							</Button>{" "}
+						</>
+					) : (
+						<Button color='primary' variant='contained'>
+							Detail
+						</Button>
+					)}
 				</div>
 			</TableCell>
 		</TableRow>

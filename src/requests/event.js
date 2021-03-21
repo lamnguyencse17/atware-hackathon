@@ -29,9 +29,13 @@ export const createEvent = async (eventDetail) => {
 export const acceptEvent = async (eventId, userId, token) => {
 	const acceptEventUrl = `${process.env.BACKEND_URL}/api/v1/events/accept/${eventId}?user_id=${userId}`;
 	try {
-		await axios.put(acceptEventUrl, {
-			headers: { Authorization: token },
-		});
+		await axios.post(
+			acceptEventUrl,
+			{},
+			{
+				headers: { Authorization: token },
+			}
+		);
 	} catch (err) {
 		console.log(err);
 	}
@@ -47,15 +51,19 @@ export const interactEvent = async (eventId) => {
 };
 
 export const getMyEvents = async (page, limit, hostId, token) => {
-	const getMyEventsUrl = `${process.env.BACKEND_URL}/api/v1/events/getDetail/?page=${page}&limit=${limit}&host=${hostId}`;
+	const getMyEventsUrl1 = `${process.env.BACKEND_URL}/api/v1/events/getDetail/?page=${page}&limit=${limit}&host=${hostId}`;
+	const getMyEventsUrl2 = `${process.env.BACKEND_URL}/api/v1/events/getMyListEvent/?page=${page}&limit=${limit}&host=${hostId}`;
 	try {
-		const eventResult = await axios.get(getMyEventsUrl, {
+		const eventResult1 = await axios.get(getMyEventsUrl1, {
 			headers: { Authorization: token },
 		});
-		const {
-			data: { totalItems, result },
-		} = eventResult;
-		return { totalItems, result };
+		const eventResult2 = await axios.get(getMyEventsUrl2, {
+			headers: { Authorization: token },
+		});
+		return {
+			totalItems: eventResult1.data.totalItems + eventResult2.data.totalItems,
+			result: [...eventResult1.data.result, ...eventResult2.data.final_event],
+		};
 	} catch (err) {
 		console.log(err);
 	}
@@ -75,9 +83,11 @@ export const deleteEvent = async (eventId, token) => {
 export const acceptRequest = async (eventId, userId, token) => {
 	const acceptUrl = `${process.env.BACKEND_URL}/api/v1/events/accept/${eventId}?user_id=${userId}`;
 	try {
-		await axios.put(acceptUrl, {
-			headers: { Authorization: token },
-		});
+		await axios.post(
+			acceptUrl,
+			{ a: "1" },
+			{ headers: { Authorization: token } }
+		);
 	} catch (err) {
 		console.log(err);
 	}
