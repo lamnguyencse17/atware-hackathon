@@ -14,7 +14,9 @@ export default function Footer() {
 	const classes = useStyles();
 	return (
 		<AppBar color='primary' position='relative' className={classes.appBar}>
-			<div className='h-full'>Something</div>
+			<div className='container mt-6 mb-3 m-auto'>
+				<p>By ShineBright</p>
+			</div>
 		</AppBar>
 	);
 }

@@ -17,7 +17,7 @@ import DataRow from "./Row/DataRow";
 export default function App() {
 	const quotes = [
 		"We meet anyone, anytime, anywhere!",
-		"Connect people together, after the pandamic",
+		"Connect people together, after the pandemic",
 		"Easy, friendly, conveniently",
 	];
 	const districts = [
@@ -79,7 +79,10 @@ export default function App() {
 		setTotal(totalItems);
 	};
 	return (
-		<div className='container mx-auto'>
+		<div
+			className='container mx-auto'
+			style={{ "backgroundImage": 'url("src/images/bg/neuron_bg.png")' }}
+		>
 			<div className='mt-8'>
 				<div className='flex flex-col justify-center items-center'>
 					<img src='src/images/logo/weet_text.png' alt='WEET' width='250'></img>
@@ -143,11 +146,11 @@ export default function App() {
 								onClick={handleQuery}
 								className='w-full text-lg p-8'
 								variant='outlined'
-								style={{ "height": "56px"}}
+								style={{ height: "56px" }}
 							>
 								<div className='h-full'>
 									<SearchIcon color='primary' className='w-full h-full' />
-									{"Search now"}
+									{"Let's search now"}
 								</div>
 							</Button>
 						</div>

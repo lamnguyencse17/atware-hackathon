@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import HistoryIcon from "@material-ui/icons/History";
 
 const user = { name: "Khiemne" };
 
@@ -37,6 +38,16 @@ export default function PrivateNavbar({ setModal }) {
 					<button onClick={() => setModal(true)} className='font-bold'>
 						{"Add a new event "}
 						<AddCircleOutlineIcon
+							color='secondary'
+							disableFocusRipple={true}
+							disableRipple={true}
+						/>
+					</button>
+				</div>
+				<div className='p-1 mr-4 float-right'>
+					<button onClick={() => setModal(true)} className='font-bold'>
+						{"My event "}
+						<HistoryIcon
 							color='secondary'
 							disableFocusRipple={true}
 							disableRipple={true}

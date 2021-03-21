@@ -53,9 +53,9 @@ export default function Cafes() {
 							<TableCell align='center'>Date</TableCell>
 							<TableCell align='center'>Time</TableCell>
 							<TableCell align='center'>District</TableCell>
-							<TableCell align='center'>Category </TableCell>
-							<TableCell align='center'>Description </TableCell>
-							<TableCell align='center'>Action </TableCell>
+							<TableCell align='center'>Category</TableCell>
+							<TableCell align='center'>Description</TableCell>
+							<TableCell align='center'>Action</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
