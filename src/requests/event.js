@@ -13,10 +13,12 @@ export const getEventById = async (id) => {
 	}
 };
 
-export const createEvent = async (eventDetail) => {
+export const createEvent = async (eventDetail, token) => {
 	const createEventUrl = `${process.env.BACKEND_URL}/api/v1/events/create`;
 	try {
-		const eventResult = await axios.post(createEventUrl, eventDetail);
+		const eventResult = await axios.post(createEventUrl, eventDetail, {
+			headers: { Authorization: token },
+		});
 		const {
 			data: { id },
 		} = eventResult;

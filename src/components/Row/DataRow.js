@@ -16,6 +16,7 @@ export default function DataRow({
 	description,
 	host,
 }) {
+	console.log(host);
 	const token = useSelector((state) => state.auth.token);
 	const joinEvent = async () => {
 		console.log(_id);

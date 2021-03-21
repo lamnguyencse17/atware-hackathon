@@ -1,25 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { getEventById } from "../requests/event";
+import { geoCode } from "../services/google/geocode";
+import { initMap } from "../services/google/map";
 
 export default function Event() {
-	// const { id } = useParams();
-	// const [event, setEvent] = useState(null);
-	// useEffect(() => {
-	// 	(async () => {
-	// 		const event = await getEventById(id);
-	// 		console.log(event);
-	// 		setEvent({ ...event[0] });
-	// 	})();
-	// }, []);
-	// if (!event) {
-	// 	return <></>;
-	// }
+	const { id } = useParams();
+	const mapRef = useRef(null);
+	const [event, setEvent] = useState(null);
+	useEffect(() => {
+		(async () => {
+			const event = await getEventById(id);
+			setEvent({ ...event[0] });
+		})();
+	}, []);
+	useEffect(() => {
+		if (event === null) {
+			return;
+		}
+		const geocodeRequest = {
+			placeId:
+				event.place_id === undefined
+					? "ChIJ-6NhwcMudTERHmnMoUfNd-8"
+					: event.place_id,
+		};
+		geoCode(geocodeRequest).then(({ lat, lng }) => {
+			initMap(mapRef, { zoom: 17, center: { lat, lng } });
+		});
+	}, []);
+	if (!event) {
+		return <></>;
+	}
 	return (
 		<div className='container m-auto bg-gray-100'>
 			<div className='text-md'>Appointment's detail</div>
-			<div className='mt-4 flex flex-row'>
-				<table class='table-auto'>
+			<div className='flex flex-row mt-4'>
+				<table className='table-auto'>
 					<thead>
 						<th>
 							<td>Event</td>
@@ -34,30 +50,30 @@ export default function Event() {
 					</thead>
 					<tbody>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{event.title}</td>
+							<td>{event.description}</td>
+							<td>{event.date}</td>
+							<td>{event.time}</td>
+							<td>{event.address}</td>
+							<td>{event.district}</td>
+							<td>
+								{event.host.firstName === undefined
+									? "Lam"
+									: event.host.firstName}{" "}
+								{event.host.lastName === undefined
+									? "Nguyen"
+									: event.host.lastName}
+							</td>
+							<td>
+								{event.host.phoneNumber === undefined
+									? "0919696148"
+									: event.host.phoneNumber}
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			</div>
-			{/* 
-			<h1>Event: {event.title}</h1>
-			<h1>Date: {event.date}</h1>
-			<h1>Time: {event.time}:00</h1>
-			<h1>Address: {event.address}</h1>
-			<h1>District: {event.district}</h1>
-			<h1>Description: {event.description}</h1>
-			<h1>
-				Host: {event.host.firstName} {event.host.lastName} -{" "}
-				{event.host.phoneNumber}
-			</h1> */}
+			<div id='map' ref={mapRef} className='w-full h-full'></div>
 		</div>
 	);
 }

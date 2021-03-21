@@ -86,7 +86,7 @@ export default function MyEvent() {
 			) : (
 				<></>
 			)}
-			<TableContainer component={Paper} className='border border-black'>
+			<TableContainer component={Paper} className='mt-5 border border-black'>
 				<Table aria-label='simple table'>
 					<TableHead>
 						<TableRow>
