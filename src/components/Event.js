@@ -52,10 +52,10 @@ export default function Event() {
 	return (
 		<div className='container m-auto bg-gray-100'>
 			<div className='text-md'>Appointment's detail</div>
-			<div className='flex flex-row mt-4'>
-				<table className='table-auto'>
+			<div className='flex flex-row w-full mt-4'>
+				<table className='w-full table-auto'>
 					<thead>
-						<transform>
+						<tr>
 							<th>Event</th>
 							<th>Description</th>
 							<th>Date</th>

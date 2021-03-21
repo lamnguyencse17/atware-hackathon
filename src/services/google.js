@@ -1,7 +1,5 @@
 import { initAutocomplete } from "./google/autocomplete";
 import { initGeocode } from "./google/geocode";
-import { initDistance } from "./google/distance";
-import { initDirection } from "./google/direction";
 
 let GoogleServices;
 let isGoogleServiceInit = false;
@@ -18,6 +16,4 @@ export const initGoogleMapService = () => {
 	GoogleServices = window.google.maps;
 	initGeocode();
 	initAutocomplete();
-	initDistance();
-	initDirection();
 };
