@@ -44,7 +44,38 @@ export default function DeleteModal({ isOpen, closeModal, eventId }) {
 		>
 			<Fade in={isOpen}>
 				<Card className={classes.paper}>
-					<CardContent></CardContent>
+					<CardContent>
+						<div className='flex flex-col justify-center'>
+							<div className='px-16 mt-4 flex flex-col justify-center items-center pb-4'>
+								<img src='src/images/stock/warn.png' width='200'></img>
+								<h1 className='mt-4'>{"ARE YOU SURE?"}</h1>
+							</div>
+							<div>
+								<div className='mt-4 flex flex-row'>
+									<div className='pr-1 w-1/2'>
+										<Button
+											variant='contained'
+											color='primary'
+											onClick={closeModal}
+											className='w-full shadow-sm '
+										>
+											Deny accept
+										</Button>
+									</div>
+									<div className='pl-1 w-1/2'>
+										<Button
+											variant='contained'
+											color='secondary'
+											onClick={closeModal}
+											className='w-full shadow-sm'
+										>
+											Cancel
+										</Button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</CardContent>
 				</Card>
 			</Fade>
 		</Modal>

@@ -45,18 +45,16 @@ export default function PrivateNavbar({ setModal }) {
 					</button>
 				</div>
 				<div className='float-right p-1 mr-4'>
-					{/* <button className='font-bold'> */}
-
-					<Link to={"/my-event"}>
-						{"My event "}
-						<HistoryIcon
-							color='secondary'
-							disableFocusRipple={true}
-							disableRipple={true}
-						/>
-					</Link>
-
-					{/* </button> */}
+					<button onClick= {()=>setModal(true)} className='font-bold'>
+						<Link to={"/my-events"}>
+							{"My events "}
+							<HistoryIcon
+								color='secondary'
+								disableFocusRipple={true}
+								disableRipple={true}
+							/>
+						</Link>
+					</button>
 				</div>
 			</div>
 		</>
