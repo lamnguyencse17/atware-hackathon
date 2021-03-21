@@ -37,16 +37,16 @@ export default function Event() {
 			<div className='flex flex-row mt-4'>
 				<table className='table-auto'>
 					<thead>
-						<th>
-							<td>Event</td>
-							<td>Description</td>
-							<td>Date</td>
-							<td>Time</td>
-							<td>Address</td>
-							<td>District</td>
-							<td>Host's name</td>
-							<td>Phone number</td>
-						</th>
+						<transform>
+							<th>Event</th>
+							<th>Description</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Address</th>
+							<th>District</th>
+							<th>Host's name</th>
+							<th>Phone number</th>
+						</tr>
 					</thead>
 					<tbody>
 						<tr>
